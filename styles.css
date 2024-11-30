@@ -1,0 +1,192 @@
+/* Global Styles */
+body {
+    margin: 0;
+    font-family: 'Nunito', sans-serif;
+    background: #121212;
+    color: #d3dce6;
+}
+
+/* Responsive Design for Project Grid */
+@media (max-width: 768px) {
+    .project-grid {
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    }
+    .banner .info {
+        max-width: 90%;
+    }
+    .banner img {
+        width: 80%;
+    }
+}
+
+/* Banner Styling */
+.banner {
+    height: 100vh;
+    width: 100%;
+    background: linear-gradient(to bottom, #1e1e2e, #2b2b3c);
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    box-sizing: border-box;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.5);
+    text-align: left;
+    gap: 30px;
+}
+
+.banner .info {
+    max-width: 45%;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    line-height: 1.4;
+}
+
+.banner .intro-text,
+.banner .name-text,
+.banner .small-bio,
+.banner .experience {
+    font-family: 'Nunito', sans-serif;
+}
+
+.banner .intro-text {
+    font-size: 1.3rem;
+    font-weight: 300;
+    margin: 0;
+    max-width: 100%;
+    word-wrap: break-word;
+}
+
+.banner .name-text {
+    font-size: 3.5rem;
+    font-weight: bold;
+    margin: 0;
+    line-height: 1.2;
+    max-width: 100%;
+    word-wrap: break-word;
+}
+
+.banner .small-bio,
+.banner .experience {
+    font-size: 1.3rem;
+    line-height: 1.5;
+    margin: 0;
+    max-width: 60%;
+    word-wrap: break-word;
+}
+
+.banner img {
+    width: 400px;
+    height: auto;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.social-links {
+    display: flex;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.social-links img {
+    width: 40px;
+    height: 40px;
+    object-fit: contain;
+    border-radius: 0%;
+    transition: transform 0.3s ease;
+}
+
+.social-links img:hover {
+    transform: scale(1.2);
+}
+
+/* Project and Upcoming Projects Section */
+#projects, #upcoming-projects {
+    padding: 50px 20px;
+    background: linear-gradient(to bottom, #2b2b3c, #1e1e2e);
+    box-shadow: inset 0 5px 10px rgba(0, 0, 0, 0.2);
+}
+
+.project-grid {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+}
+
+.project-tile {
+    width: 500px;
+    height: 250px;
+    perspective: 1000px;
+    position: relative;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.tile-front, .tile-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    transition: transform 0.6s ease, box-shadow 0.3s ease;
+}
+
+.tile-front {
+    background: #2b2b3c;
+    color: #fff;
+    text-align: center;
+}
+
+.tile-back {
+    background: none;
+    color: transparent;
+    transform: rotateY(180deg);
+}
+
+.tile-back video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.project-tile:hover {
+    animation: wobble 0.6s ease, float 1.2s ease-in-out infinite;
+    box-shadow: 0 0 20px rgba(71, 85, 105, 0.7), 0 0 30px rgba(71, 85, 105, 0.5);
+}
+
+.project-tile:hover .tile-front {
+    transform: rotateY(180deg);
+}
+
+.project-tile:hover .tile-back {
+    transform: rotateY(360deg);
+}
+
+/* Animations */
+@keyframes wobble {
+    0% { transform: rotate(0); }
+    25% { transform: rotate(2deg); }
+    50% { transform: rotate(-2deg); }
+    75% { transform: rotate(1deg); }
+    100% { transform: rotate(0); }
+}
+
+@keyframes float {
+    0% { transform: translateY(0); }
+    50% { transform: translateY(-5px); }
+    100% { transform: translateY(0); }
+}
+
+/* Upcoming Projects Section Header */
+#upcoming-projects h2 {
+    color: #ffffff;
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 30px;
+}
