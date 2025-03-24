@@ -34,10 +34,11 @@ body {
     position: relative;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
     transition: transform 0.3s ease;
+    cursor: pointer; /* Ensure it's clickable */
 }
 
-.project-tile:hover {
-    transform: scale(1.05);
+.project-tile:active {
+    transform: scale(1.05); /* Tap effect for mobile */
 }
 
 .tile-front, .tile-back {
@@ -55,12 +56,12 @@ body {
     transform: rotateY(180deg);
 }
 
-.project-tile:hover .tile-front {
-    transform: rotateY(180deg);
+.project-tile:active .tile-front {
+    transform: rotateY(180deg); /* Flip effect on tap */
 }
 
-.project-tile:hover .tile-back {
-    transform: rotateY(360deg);
+.project-tile:active .tile-back {
+    transform: rotateY(360deg); /* Flip effect on tap */
 }
 
 /* For mobile (small screens) */
@@ -80,9 +81,11 @@ body {
         transition: transform 0.2s ease-in-out; /* Smooth transition */
     }
 
-    /* Make the hover effect work on touch devices */
-    .project-tile:active {
-        transform: scale(1.05);
+    /* Make sure bio is viewable on mobile */
+    .bio {
+        font-size: 1rem; /* Adjust font size for mobile */
+        text-align: center;
+        margin-top: 20px;
     }
 
     .tile-title {
@@ -113,6 +116,12 @@ body {
 
     .tile-description {
         font-size: 1rem;
+    }
+
+    /* Ensure bio is visible on larger screens */
+    .bio {
+        font-size: 1.2rem;
+        text-align: center;
     }
 }
 
