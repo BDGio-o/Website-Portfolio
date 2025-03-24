@@ -6,121 +6,115 @@ body {
     color: #d3dce6;
 }
 
-/* Mobile-first approach: by default, assume styles for mobile, then override for desktop */
+/* Base styles for both mobile and desktop */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
-/* For small devices like mobile phones */
+.project-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    padding: 10px;
+    margin-top: 20px;
+}
+
+.project-tile {
+    width: 100%;
+    max-width: 300px;
+    height: 350px;
+    margin: 10px;
+    background-color: #333;
+    border-radius: 8px;
+    overflow: hidden;
+    position: relative;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease;
+}
+
+.project-tile:hover {
+    transform: scale(1.05);
+}
+
+.tile-front, .tile-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    transition: transform 0.3s ease;
+}
+
+.tile-back {
+    transform: rotateY(180deg);
+}
+
+.project-tile:hover .tile-front {
+    transform: rotateY(180deg);
+}
+
+.project-tile:hover .tile-back {
+    transform: rotateY(360deg);
+}
+
+/* For mobile (small screens) */
 @media only screen and (max-width: 768px) {
-    /* Scale the project tiles down for smaller screens */
     .project-grid {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 20px;
+        flex-direction: column; /* Stack tiles vertically on mobile */
+        align-items: center; /* Center the tiles */
         padding: 10px;
     }
 
     .project-tile {
-        width: 100%; /* Full-width for mobile */
-        max-width: 300px; /* Limit the max size */
-        height: auto;
-        margin: 10px;
-        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
-        transition: transform 0.3s ease;
+        width: 90%; /* Give the tiles more room */
+        max-width: none; /* Remove the max width for mobile */
+        height: 250px; /* Smaller height for mobile */
+        margin: 10px 0;
+        box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2); /* Softer shadow for mobile */
+        transition: transform 0.2s ease-in-out; /* Smooth transition */
     }
 
-    /* Adjust the content inside the tiles */
+    /* Make the hover effect work on touch devices */
+    .project-tile:active {
+        transform: scale(1.05);
+    }
+
     .tile-title {
-        font-size: 1.2rem; /* Slightly smaller title */
+        font-size: 1rem;
     }
 
     .tile-description {
-        font-size: 0.9rem; /* Smaller description */
-    }
-
-    /* Hover effect to focus on the tile */
-    .project-tile:hover .tile-front {
-        transform: rotateY(180deg); /* Add hover-like effect on touch */
-    }
-
-    .project-tile:hover .tile-back {
-        transform: rotateY(360deg);
-    }
-
-    /* Adjust navbar to be mobile-friendly */
-    nav ul {
-        flex-direction: column;
-        gap: 10px;
-    }
-
-    .navbar {
-        background-color: #1e1e2e; /* Dark background for mobile */
+        font-size: 0.8rem;
     }
 }
 
-/* For larger screens (Tablets and up) */
+/* For tablets and larger screens */
 @media only screen and (min-width: 769px) {
-    .banner {
-        padding: 40px;
-    }
-
-    /* Keep project tiles in a grid with more space */
     .project-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-        gap: 20px;
-        padding: 20px;
+        flex-direction: row; /* Lay tiles out in a row on larger screens */
+        flex-wrap: wrap;
+        justify-content: center;
     }
 
     .project-tile {
-        width: 100%; /* Full width for tiles but with a defined grid size */
-        height: 300px;
-        margin: 10px;
-        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        width: 300px; /* Standard width for tiles */
+        height: 350px; /* Standard height for tiles */
     }
 
-    /* Adjust text size for larger screens */
     .tile-title {
-        font-size: 1.5rem;
-    }
-
-    .tile-description {
-        font-size: 1.1rem;
-    }
-
-    /* Navbar and other elements */
-    nav ul {
-        flex-direction: row;
-        gap: 20px;
-    }
-
-    .navbar {
-        background-color: #1e1e2e; /* Dark background */
-    }
-}
-
-/* For very large screens like desktops */
-@media only screen and (min-width: 1200px) {
-    .project-grid {
-        grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); /* Add more space for desktop */
-    }
-
-    .project-tile {
-        width: 100%;
-        height: 350px;
-        margin: 15px;
-        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.4);
-    }
-
-    /* More spacious text for large screens */
-    .tile-title {
-        font-size: 1.8rem;
-    }
-
-    .tile-description {
         font-size: 1.2rem;
     }
-}
 
+    .tile-description {
+        font-size: 1rem;
+    }
+}
 
 /* Hover effect remains slightly larger but now also faster */
 .profile-photo:hover {
