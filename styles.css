@@ -6,32 +6,135 @@ body {
     color: #d3dce6;
 }
 
-/* Responsive Design for Project Grid */
-@media (max-width: 768px) {
-    .project-grid {
-        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    }
-    .banner .info {
-        max-width: 90%;
-    }
-    .banner img {
-        width: 80%;
-    }
-}
+/* Mobile-first approach: by default, assume styles for mobile, then override for desktop */
 
-/* for phone use */
-
-@media (max-width: 768px) {
+/* For small devices like mobile phones */
+@media only screen and (max-width: 768px) {
+    /* Scale the project tiles down for smaller screens */
     .project-grid {
-        flex-direction: column;
-        align-items: center;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 20px;
+        padding: 10px;
     }
 
     .project-tile {
-        width: 90%;
+        width: 100%; /* Full-width for mobile */
+        max-width: 300px; /* Limit the max size */
+        height: auto;
+        margin: 10px;
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+        transition: transform 0.3s ease;
+    }
+
+    /* Adjust the content inside the tiles */
+    .tile-title {
+        font-size: 1.2rem; /* Slightly smaller title */
+    }
+
+    .tile-description {
+        font-size: 0.9rem; /* Smaller description */
+    }
+
+    /* Hover effect to focus on the tile */
+    .project-tile:hover .tile-front {
+        transform: rotateY(180deg); /* Add hover-like effect on touch */
+    }
+
+    .project-tile:hover .tile-back {
+        transform: rotateY(360deg);
+    }
+
+    /* Adjust navbar to be mobile-friendly */
+    nav ul {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .navbar {
+        background-color: #1e1e2e; /* Dark background for mobile */
     }
 }
 
+/* For larger screens (Tablets and up) */
+@media only screen and (min-width: 769px) {
+    .banner {
+        padding: 40px;
+    }
+
+    /* Keep project tiles in a grid with more space */
+    .project-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 20px;
+        padding: 20px;
+    }
+
+    .project-tile {
+        width: 100%; /* Full width for tiles but with a defined grid size */
+        height: 300px;
+        margin: 10px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    }
+
+    /* Adjust text size for larger screens */
+    .tile-title {
+        font-size: 1.5rem;
+    }
+
+    .tile-description {
+        font-size: 1.1rem;
+    }
+
+    /* Navbar and other elements */
+    nav ul {
+        flex-direction: row;
+        gap: 20px;
+    }
+
+    .navbar {
+        background-color: #1e1e2e; /* Dark background */
+    }
+}
+
+/* For very large screens like desktops */
+@media only screen and (min-width: 1200px) {
+    .project-grid {
+        grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); /* Add more space for desktop */
+    }
+
+    .project-tile {
+        width: 100%;
+        height: 350px;
+        margin: 15px;
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.4);
+    }
+
+    /* More spacious text for large screens */
+    .tile-title {
+        font-size: 1.8rem;
+    }
+
+    .tile-description {
+        font-size: 1.2rem;
+    }
+}
+
+
+/* Hover effect remains slightly larger but now also faster */
+.profile-photo:hover {
+    animation: fullFloatHover 8s infinite ease-in-out;
+}
+
+@keyframes fullFloatHover {
+    0% { transform: translate(0px, 0px) scale(1.05); }
+    20% { transform: translate(10px, -8px) scale(1.05); }
+    40% { transform: translate(-10px, 8px) scale(1.05); }
+    60% { transform: translate(8px, 10px) scale(1.05); }
+    80% { transform: translate(-8px, -10px) scale(1.05); }
+    100% { transform: translate(0px, 0px) scale(1.05); }
+}
 
 /* Banner Styling */
 .banner {
@@ -97,6 +200,8 @@ body {
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
 }
 
+/*socials*/
+
 .social-links {
     display: flex;
     gap: 15px;
@@ -109,9 +214,6 @@ body {
     object-fit: contain;
     border-radius: 0%;
     transition: transform 0.3s ease;
-}
-
-.social-links img {
     transition: transform 0.3s ease, filter 0.3s ease;
 }
 
@@ -122,14 +224,7 @@ body {
 
 
 /* Project and Upcoming Projects Section */
-#projects {
-    padding: 50px 20px;
-    background: linear-gradient(to bottom, #2b2b3c, #1e1e2e);
-    box-shadow: inset 0 5px 10px rgba(0, 0, 0, 0.2);
-}
-
-/* Project and Upcoming Projects Section */
-#upcoming-projects {
+#projects, #upcoming-projects {
     padding: 50px 20px;
     background: linear-gradient(to bottom, #2b2b3c, #1e1e2e);
     box-shadow: inset 0 5px 10px rgba(0, 0, 0, 0.2);
@@ -151,6 +246,30 @@ body {
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
+.tile-content {
+    max-width: 90%; /* Prevents text from overflowing */
+}
+
+.tile-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.tile-description {
+    font-size: 1rem;
+    opacity: 0.8; /* Makes it slightly less bright */
+    line-height: 1.4;
+}
+
+.tile-inner {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 0.6s ease;
+}
+
 .tile-front, .tile-back {
     position: absolute;
     width: 100%;
@@ -162,6 +281,18 @@ body {
     border-radius: 10px;
     transition: transform 0.6s ease, box-shadow 0.3s ease;
 }
+
+.project-tile:hover .tile-back {
+    opacity: 1;
+    visibility: visible;
+}
+
+.project-tile:not(:hover) .tile-back {
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.1s ease-out;
+}
+
 
 .tile-front {
     background: #2b2b3c;
@@ -175,12 +306,13 @@ body {
     transform: rotateY(180deg);
 }
 
-.tile-back video {
-    width: 100%;
+.project-tile .tile-back video {
+    width: 100%; 
     height: 100%;
     object-fit: cover;
-    border-radius: 10px;
+    border-radius: 5px;
 }
+
 
 .project-tile:hover {
     animation: wobble 0.6s ease, float 1.2s ease-in-out infinite;
@@ -210,21 +342,6 @@ body {
     100% { transform: translateY(0); }
 }
 
-/* Upcoming Projects Section Header */
-#upcoming-projects h2 {
-    color: #ffffff;
-    text-align: center;
-    font-size: 2.5rem;
-    margin-bottom: 30px;
-}
-
-/* Upcoming Projects Section Header */
-#projects h2 {
-    color: #ffffff;
-    text-align: center;
-    font-size: 2.5rem;
-    margin-bottom: 30px;
-}
 
 /* Navigation Bar */
 nav {
@@ -310,86 +427,84 @@ html {
 /* Light Mode Adjustments for Projects and Upcoming Projects */
 .light-mode #projects,
 .light-mode #upcoming-projects {
-    background: #ffffff; /* Change to a light background */
-    color: hsl(240, 21%, 15%); /* Adjust text color for better contrast */
+    background: #ffffff;
+    color: hsl(240, 21%, 15%); 
 }
 
 .light-mode #projects h2,
 .light-mode #upcoming-projects h2 {
-    color: #1e1e2e; /* Ensure headers are readable */
+    color: #1e1e2e; 
 }
 
 /* Default styles for dark mode */
 body {
-    background-color: #121212; /* Dark background */
-    color: white; /* White text color */
-    transition: background-color 0.3s ease, color 0.3s ease; /* Smooth transition for background and text color */
+    background-color: #121212;
+    color: white;
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .navbar {
-    background-color:  #1e1e2e(51, 51, 51, 0.8); /* Semi-transparent dark background */
-    color: white; /* White text color */
-    transition: background-color 0.3s ease, color 0.3s ease; /* Smooth transition */
+    background-color: rgba(30, 30, 46, 0.8);
+    color: white;
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .navbar a {
-    color: white; /* White link color */
-    transition: color 0.3s ease; /* Smooth transition for link color */
+    color: white;
+    transition: color 0.3s ease;
 }
 
 body.light-mode {
-    background-color: #f4f4f4; /* Light background */
-    color: black; /* Black text for better readability */
+    background-color: #f4f4f4;
+    color: black;
 }
 
 body.light-mode .navbar {
-    background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent light background */
-    color: black; /* Black text for navbar */
+    background-color: rgba(255, 255, 255, 0.8);
+    color: black;
 }
 
 body.light-mode .navbar a {
-    color: black; /* Black links for light theme */
+    color: black;
 }
 
 body.light-mode .navbar a:hover {
-    color: #007bff; /* Blue hover color */
+    color: #007bff;
 }
 
 body.light-mode button {
-    background-color: #f1f1f1; /* Light button background */
-    color: black; /* Black text for buttons */
-    border: 1px solid #ccc; /* Light border */
-    transition: background-color 0.3s ease, color 0.3s ease; /* Smooth button transition */
+    background-color: #f1f1f1;
+    color: black;
+    border: 1px solid #ccc;
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 body.light-mode button:hover {
-    background-color: #007bff; /* Blue background on hover */
-    color: white; /* White text on hover */
+    background-color: #007bff;
+    color: white;
 }
 
-/* For sections or cards */
 body.light-mode .card {
-    background-color: #fff; /* White background */
-    color: black; /* Black text */
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Light shadow */
-    transition: background-color 0.3s ease, color 0.3s ease; /* Smooth transition */
+    background-color: #fff;
+    color: black;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-/* Smooth transition for inputs, select, and textareas */
 body.light-mode input,
 body.light-mode select,
 body.light-mode textarea {
-    background-color: #fff; /* White background for inputs */
-    color: black; /* Black text */
-    border: 1px solid #ccc; /* Light border */
+    background-color: #fff;
+    color: black;
+    border: 1px solid #ccc;
     padding: 10px;
     border-radius: 4px;
-    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease; /* Smooth transition */
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
 }
 
 body.light-mode input:focus,
 body.light-mode select:focus,
 body.light-mode textarea:focus {
-    border-color: #007bff; /* Blue border on focus */
-    outline: none; /* Remove default focus outline */
+    border-color: #007bff;
+    outline: none;
 }
