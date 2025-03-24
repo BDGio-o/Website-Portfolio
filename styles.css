@@ -6,125 +6,78 @@ body {
     color: #d3dce6;
 }
 
-/* Base styles for both mobile and desktop */
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
 
-.project-grid {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 20px;
-    padding: 10px;
-    margin-top: 20px;
-}
-
-.project-tile {
-    width: 100%;
-    max-width: 300px;
-    height: 350px;
-    margin: 10px;
-    background-color: #333;
-    border-radius: 8px;
-    overflow: hidden;
-    position: relative;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-    transition: transform 0.3s ease;
-    cursor: pointer; /* Ensure it's clickable */
-}
-
-.project-tile:active {
-    transform: scale(1.05); /* Tap effect for mobile */
-}
-
-.tile-front, .tile-back {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: white;
-    transition: transform 0.3s ease;
-}
-
-.tile-back {
-    transform: rotateY(180deg);
-}
-
-.project-tile:active .tile-front {
-    transform: rotateY(180deg); /* Flip effect on tap */
-}
-
-.project-tile:active .tile-back {
-    transform: rotateY(360deg); /* Flip effect on tap */
-}
-
-/* For mobile (small screens) */
+/* Mobile Styles */
 @media only screen and (max-width: 768px) {
+    body {
+        zoom: 0.8; /* "Zoom out" for mobile view */
+    }
+
     .project-grid {
-        flex-direction: column; /* Stack tiles vertically on mobile */
-        align-items: center; /* Center the tiles */
-        padding: 10px;
+        flex-direction: column; /* Stack the tiles vertically */
+        align-items: center;
     }
 
     .project-tile {
-        width: 90%; /* Give the tiles more room */
-        max-width: none; /* Remove the max width for mobile */
-        height: 250px; /* Smaller height for mobile */
-        margin: 10px 0;
+        width: 90%; /* Give tiles more space on mobile */
+        max-width: none; /* Remove max width restriction */
+        height: 250px;
+        margin: 15px 0;
         box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2); /* Softer shadow for mobile */
-        transition: transform 0.2s ease-in-out; /* Smooth transition */
+        transition: transform 0.3s ease;
     }
 
-    /* Make sure bio is viewable on mobile */
+    .tile-title {
+        font-size: 1.2rem;
+        text-align: center;
+    }
+
+    .tile-description {
+        font-size: 1rem;
+        text-align: center;
+    }
+
+    /* Bio section */
     .bio {
-        font-size: 1rem; /* Adjust font size for mobile */
+        font-size: 1rem;
         text-align: center;
         margin-top: 20px;
     }
 
-    .tile-title {
-        font-size: 1rem;
+    /* Hide unnecessary details on small screens */
+    .profile-photo {
+        max-width: 150px;
+        margin-top: 20px;
     }
 
-    .tile-description {
-        font-size: 0.8rem;
+    /* Ensure all links are easy to tap */
+    .nav-links a {
+        font-size: 1.1rem;
+        padding: 10px;
+        display: block;
     }
 }
 
-/* For tablets and larger screens */
+
+/* For larger screens, keep the existing layout */
 @media only screen and (min-width: 769px) {
     .project-grid {
-        flex-direction: row; /* Lay tiles out in a row on larger screens */
-        flex-wrap: wrap;
-        justify-content: center;
+        flex-direction: row; /* Keep the grid layout on large screens */
     }
 
     .project-tile {
-        width: 300px; /* Standard width for tiles */
-        height: 350px; /* Standard height for tiles */
+        width: 300px;
+        height: 350px;
     }
 
     .tile-title {
-        font-size: 1.2rem;
+        font-size: 1.5rem;
     }
 
     .tile-description {
-        font-size: 1rem;
-    }
-
-    /* Ensure bio is visible on larger screens */
-    .bio {
         font-size: 1.2rem;
-        text-align: center;
     }
 }
-
 /* Hover effect remains slightly larger but now also faster */
 .profile-photo:hover {
     animation: fullFloatHover 8s infinite ease-in-out;
