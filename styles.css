@@ -4,80 +4,11 @@ body {
     font-family: 'Nunito', sans-serif;
     background: #121212;
     color: #d3dce6;
+    box-sizing: border-box;
+    overflow-x: hidden; /* Prevent horizontal scroll */
 }
 
 
-/* Mobile Styles */
-@media only screen and (max-width: 768px) {
-    body {
-        zoom: 0.8; /* "Zoom out" for mobile view */
-    }
-
-    .project-grid {
-        flex-direction: column; /* Stack the tiles vertically */
-        align-items: center;
-    }
-
-    .project-tile {
-        width: 90%; /* Give tiles more space on mobile */
-        max-width: none; /* Remove max width restriction */
-        height: 250px;
-        margin: 15px 0;
-        box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2); /* Softer shadow for mobile */
-        transition: transform 0.3s ease;
-    }
-
-    .tile-title {
-        font-size: 1.2rem;
-        text-align: center;
-    }
-
-    .tile-description {
-        font-size: 1rem;
-        text-align: center;
-    }
-
-    /* Bio section */
-    .bio {
-        font-size: 1rem;
-        text-align: center;
-        margin-top: 20px;
-    }
-
-    /* Hide unnecessary details on small screens */
-    .profile-photo {
-        max-width: 150px;
-        margin-top: 20px;
-    }
-
-    /* Ensure all links are easy to tap */
-    .nav-links a {
-        font-size: 1.1rem;
-        padding: 10px;
-        display: block;
-    }
-}
-
-
-/* For larger screens, keep the existing layout */
-@media only screen and (min-width: 769px) {
-    .project-grid {
-        flex-direction: row; /* Keep the grid layout on large screens */
-    }
-
-    .project-tile {
-        width: 300px;
-        height: 350px;
-    }
-
-    .tile-title {
-        font-size: 1.5rem;
-    }
-
-    .tile-description {
-        font-size: 1.2rem;
-    }
-}
 /* Hover effect remains slightly larger but now also faster */
 .profile-photo:hover {
     animation: fullFloatHover 8s infinite ease-in-out;
