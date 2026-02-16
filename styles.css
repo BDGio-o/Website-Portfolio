@@ -280,3 +280,91 @@ body {
     filter: brightness(0.6) blur(3px);
     border-radius: 16px;
 }
+
+/* =========================================
+   MOBILE RESPONSIVE (768px and below)
+========================================= */
+
+@media (max-width: 768px) {
+
+    /* Prevent horizontal scrolling */
+    body {
+        overflow-x: hidden;
+    }
+
+    /* NAVBAR */
+    .navbar {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 15px 20px;
+    }
+
+    .nav-links {
+        flex-direction: column;
+        width: 100%;
+        gap: 12px;
+        margin-top: 10px;
+    }
+
+    .nav-links li {
+        width: 100%;
+    }
+
+    .nav-links a {
+        display: block;
+        width: 100%;
+        padding: 6px 0;
+    }
+
+    /* HERO SECTION */
+    .hero {
+        padding: 130px 20px 120px 20px;
+        text-align: center;
+    }
+
+    .hero-content {
+        flex-direction: column;
+        gap: 40px;
+    }
+
+    .hero-text {
+        max-width: 100%;
+    }
+
+    .hero-text h1 {
+        font-size: 32px;
+    }
+
+    .hero-buttons {
+        justify-content: center;
+    }
+
+    .hero-image {
+        width: 220px;
+        border-radius: 60px;
+    }
+
+    /* SECTIONS */
+    .expandable {
+        padding: 60px 20px;
+    }
+
+    .section-header h2 {
+        font-size: 24px;
+    }
+
+    /* CARDS */
+    .card-container {
+        flex-direction: column;
+        align-items: center;
+        gap: 25px;
+    }
+
+    .card {
+        width: 90%;
+        max-width: 350px;
+        height: 240px;
+    }
+}
+
+
