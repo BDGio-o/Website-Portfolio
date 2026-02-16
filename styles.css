@@ -1,3 +1,6 @@
+/* =====================
+   GLOBAL RESET & BASE
+===================== */
 * {
     margin: 0;
     padding: 0;
@@ -13,35 +16,52 @@ body {
     background-color: #0f0f1a;
     color: #e4e4f0;
     line-height: 1.6;
+    overflow-x: hidden; /* prevent horizontal scroll */
 }
 
-/* NAVBAR */
+/* =====================
+   NAVBAR - MOBILE FIRST
+===================== */
 .navbar {
     position: fixed;
-    width: 100%;
     top: 0;
+    width: 100%;
     background: #151528;
     display: flex;
-    justify-content: space-between;
-    padding: 20px 50px;
-    box-shadow: 0 2px 15px rgba(0,0,0,0.4);
+    flex-direction: column;
+    align-items: center;
+    padding: 12px 15px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.4);
     z-index: 1000;
+    gap: 8px;
 }
 
 .logo {
+    font-size: 20px;
     font-weight: bold;
     color: #a78bfa;
 }
 
 .nav-links {
     display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    gap: 8px;
+    padding: 0;
+    margin: 0;
     list-style: none;
-    gap: 25px;
+}
+
+.nav-links li {
+    width: auto;
 }
 
 .nav-links a {
+    font-size: 14px;
     text-decoration: none;
     color: #e4e4f0;
+    padding: 6px 0;
     font-weight: 500;
     transition: 0.3s;
 }
@@ -50,45 +70,50 @@ body {
     color: #8b5cf6;
 }
 
-/* HERO */
+/* =====================
+   HERO - MOBILE FIRST
+===================== */
 .hero {
+    padding: 80px 15px 60px 15px;
+    text-align: center;
+    border-radius: 0;
     background: linear-gradient(135deg, #151528, #1d1d34);
-    color: #e4e4f0;
-    padding: 150px 10% 180px 10%;
-    border-bottom-left-radius: 30px;
-    border-bottom-right-radius: 30px;
 }
 
 .hero-content {
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
     align-items: center;
-}
-
-.hero-text {
-    max-width: 50%;
+    gap: 20px;
 }
 
 .hero-text h1 {
-    font-size: 48px;
-    margin-bottom: 10px;
+    font-size: 28px;
+    margin-bottom: 8px;
 }
 
 .tagline {
+    font-size: 16px;
     color: #a78bfa;
-    margin-bottom: 15px;
+    margin-bottom: 10px;
+}
+
+.hero-text p {
+    font-size: 14px;
+    line-height: 1.5;
 }
 
 .hero-buttons {
-    margin-top: 20px;
     display: flex;
-    gap: 20px;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 15px;
 }
 
 .social-btn {
     display: inline-block;
-    width: 40px;
-    height: 40px;
+    width: 36px;
+    height: 36px;
     overflow: hidden;
     border-radius: 0%;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -101,40 +126,19 @@ body {
     transition: transform 0.3s ease;
 }
 
-/* Hover effect: float and scale up */
 .social-btn:hover {
-    transform: translateY(-10px) scale(1.15);
-    box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+    transform: translateY(-8px) scale(1.1);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.4);
 }
 
 .social-btn:hover img {
-    transform: scale(1.1);
-}
-
-
-.primary {
-    background: #8b5cf6;
-    color: white;
-}
-
-.primary:hover {
-    background: #7c3aed;
-}
-
-.secondary {
-    border: 2px solid #8b5cf6;
-    color: #a78bfa;
-}
-
-.secondary:hover {
-    background: #8b5cf6;
-    color: white;
+    transform: scale(1.05);
 }
 
 .hero-image {
-    width: 400px;
+    width: 160px;
     aspect-ratio: 1 / 1;
-    border-radius: 100px;
+    border-radius: 50px;
     overflow: hidden;
     transition: transform 0.4s ease, box-shadow 0.4s ease;
 }
@@ -147,14 +151,15 @@ body {
 }
 
 .hero-image:hover {
-    transform: translateY(-10px) scale(1.03);
-    box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+    transform: translateY(-5px) scale(1.02);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.4);
 }
 
-
-/* SECTIONS */
+/* =====================
+   SECTIONS & CARDS
+===================== */
 .expandable {
-    padding: 80px 10%;
+    padding: 50px 15px;
     border-bottom: 1px solid #1f1f3a;
 }
 
@@ -170,12 +175,12 @@ body {
 }
 
 .section-header h2 {
-    font-size: 30px;
+    font-size: 22px;
     color: #a78bfa;
 }
 
 .toggle {
-    font-size: 28px;
+    font-size: 24px;
     font-weight: bold;
     color: #8b5cf6;
 }
@@ -188,21 +193,21 @@ body {
 
 .section-content.active {
     max-height: 1000px;
-    margin-top: 30px;
+    margin-top: 20px;
 }
 
-/* CARD CONTAINER */
 .card-container {
     display: flex;
-    gap: 40px;
-    flex-wrap: wrap;
-    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
 }
 
 /* FLIP CARD */
 .card {
-    width: 270px;
-    height: 270px;
+    width: 90%;
+    max-width: 300px;
+    height: 220px;
     perspective: 1200px;
 }
 
@@ -215,11 +220,6 @@ body {
     cursor: pointer;
 }
 
-.card:hover .card-inner {
-    transform: rotateY(180deg);
-}
-
-/* FRONT OF CARD */
 .card-front, .card-back {
     position: absolute;
     width: 100%;
@@ -230,20 +230,18 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 20px;
+    padding: 15px;
 }
 
-/* Front styling */
 .card-front {
     background: #1d1d34;
     color: #a78bfa;
     font-weight: bold;
-    font-size: 22px;
+    font-size: 18px;
     text-align: center;
-    box-shadow: 0 8px 25px rgba(0,0,0,0.4);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.4);
 }
 
-/* Back styling */
 .card-back {
     transform: rotateY(180deg);
     color: white;
@@ -251,7 +249,6 @@ body {
     position: relative;
 }
 
-/* Gradient + blurred background */
 .card-back::before {
     content: "";
     position: absolute;
@@ -261,14 +258,12 @@ body {
     z-index: 0;
 }
 
-/* Content on back */
 .card-back p, .card-back h3 {
     position: relative;
     z-index: 1;
     color: #f1f1ff;
 }
 
-/* Optional background video inside back */
 .card-back video {
     position: absolute;
     width: 100%;
@@ -281,104 +276,78 @@ body {
     border-radius: 16px;
 }
 
-/* =========================
-   MOBILE ADJUSTMENTS - CLEAN
-========================= */
-@media (max-width: 768px) {
-
-    /* NAVBAR */
-    .navbar {
-        flex-direction: column;
-        align-items: center; /* center the logo and links */
-        padding: 15px 10px; /* reduce padding */
-        gap: 10px;
+/* =====================
+   TOUCH DEVICES - TAP TO FLIP
+===================== */
+@media (hover: none) and (pointer: coarse) {
+    .card-inner {
+        transform: rotateY(0deg);
     }
-
-    .logo {
-        font-size: 20px;
-    }
-
-    .nav-links {
-        flex-direction: column;
-        align-items: center;
-        width: 100%;
-        gap: 8px;
-        margin: 0;
-    }
-
-    .nav-links li {
-        width: auto; /* links shrink to content */
-    }
-
-    .nav-links a {
-        font-size: 14px;
-        padding: 6px 10px;
-    }
-
-    /* HERO SECTION */
-    .hero {
-        padding: 80px 15px 80px 15px; /* shrink vertical and horizontal padding */
-        border-radius: 0; /* optional, remove rounded bottom corners for mobile */
-    }
-
-    .hero-content {
-        flex-direction: column; /* stack image under text */
-        align-items: center;
-        gap: 25px;
-    }
-
-    .hero-text {
-        max-width: 100%;
-        text-align: center;
-    }
-
-    .hero-text h1 {
-        font-size: 28px;
-        margin-bottom: 10px;
-    }
-
-    .tagline {
-        font-size: 16px;
-        margin-bottom: 10px;
-    }
-
-    .hero-text p {
-        font-size: 14px;
-        line-height: 1.5;
-    }
-
-    .hero-buttons {
-        justify-content: center;
-        gap: 15px;
-    }
-
-    .hero-image {
-        width: 180px;
-        aspect-ratio: 1 / 1;
-        border-radius: 50px;
-    }
-
-    /* CARDS */
-    .card-container {
-        flex-direction: column;
-        align-items: center;
-        gap: 20px;
-    }
-
-    .card {
-        width: 90%;
-        max-width: 300px;
-        height: 220px;
-    }
-
-    .section-header h2 {
-        font-size: 22px;
-    }
-
-    .expandable {
-        padding: 50px 15px;
+    .card.flipped .card-inner {
+        transform: rotateY(180deg);
     }
 }
 
+/* =====================
+   DESKTOP OVERRIDES
+===================== */
+@media (min-width: 769px) {
 
+    .navbar {
+        flex-direction: row;
+        justify-content: space-between;
+        padding: 20px 50px;
+    }
+
+    .nav-links {
+        flex-direction: row;
+        gap: 25px;
+        width: auto;
+    }
+
+    .hero-content {
+        flex-direction: row;
+        justify-content: space-between;
+        gap: 40px;
+        align-items: center;
+    }
+
+    .hero-text {
+        max-width: 50%;
+        text-align: left;
+    }
+
+    .hero-text h1 {
+        font-size: 48px;
+    }
+
+    .hero-text p {
+        font-size: 16px;
+    }
+
+    .hero-image {
+        width: 400px;
+        border-radius: 100px;
+    }
+
+    .card-container {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 40px;
+    }
+
+    .card {
+        width: 270px;
+        height: 270px;
+    }
+
+    .section-header h2 {
+        font-size: 30px;
+    }
+
+    .expandable {
+        padding: 80px 10%;
+    }
+}
 
