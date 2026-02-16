@@ -17,3 +17,12 @@ headers.forEach(header => {
         }
     });
 });
+
+// Make cards tap-to-flip on mobile
+const cards = document.querySelectorAll('.card');
+cards.forEach(card => {
+    card.addEventListener('click', () => {
+        card.classList.toggle('flipped');
+    });
+});
+``
