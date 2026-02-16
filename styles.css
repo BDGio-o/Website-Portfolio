@@ -281,90 +281,104 @@ body {
     border-radius: 16px;
 }
 
-/* =========================================
-   MOBILE RESPONSIVE (768px and below)
-========================================= */
-
+/* =========================
+   MOBILE ADJUSTMENTS - CLEAN
+========================= */
 @media (max-width: 768px) {
-
-    /* Prevent horizontal scrolling */
-    body {
-        overflow-x: hidden;
-    }
 
     /* NAVBAR */
     .navbar {
         flex-direction: column;
-        align-items: flex-start;
-        padding: 15px 20px;
+        align-items: center; /* center the logo and links */
+        padding: 15px 10px; /* reduce padding */
+        gap: 10px;
+    }
+
+    .logo {
+        font-size: 20px;
     }
 
     .nav-links {
         flex-direction: column;
+        align-items: center;
         width: 100%;
-        gap: 12px;
-        margin-top: 10px;
+        gap: 8px;
+        margin: 0;
     }
 
     .nav-links li {
-        width: 100%;
+        width: auto; /* links shrink to content */
     }
 
     .nav-links a {
-        display: block;
-        width: 100%;
-        padding: 6px 0;
+        font-size: 14px;
+        padding: 6px 10px;
     }
 
     /* HERO SECTION */
     .hero {
-        padding: 130px 20px 120px 20px;
-        text-align: center;
+        padding: 80px 15px 80px 15px; /* shrink vertical and horizontal padding */
+        border-radius: 0; /* optional, remove rounded bottom corners for mobile */
     }
 
     .hero-content {
-        flex-direction: column;
-        gap: 40px;
+        flex-direction: column; /* stack image under text */
+        align-items: center;
+        gap: 25px;
     }
 
     .hero-text {
         max-width: 100%;
+        text-align: center;
     }
 
     .hero-text h1 {
-        font-size: 32px;
+        font-size: 28px;
+        margin-bottom: 10px;
+    }
+
+    .tagline {
+        font-size: 16px;
+        margin-bottom: 10px;
+    }
+
+    .hero-text p {
+        font-size: 14px;
+        line-height: 1.5;
     }
 
     .hero-buttons {
         justify-content: center;
+        gap: 15px;
     }
 
     .hero-image {
-        width: 220px;
-        border-radius: 60px;
-    }
-
-    /* SECTIONS */
-    .expandable {
-        padding: 60px 20px;
-    }
-
-    .section-header h2 {
-        font-size: 24px;
+        width: 180px;
+        aspect-ratio: 1 / 1;
+        border-radius: 50px;
     }
 
     /* CARDS */
     .card-container {
         flex-direction: column;
         align-items: center;
-        gap: 25px;
+        gap: 20px;
     }
 
     .card {
         width: 90%;
-        max-width: 350px;
-        height: 240px;
+        max-width: 300px;
+        height: 220px;
+    }
+
+    .section-header h2 {
+        font-size: 22px;
+    }
+
+    .expandable {
+        padding: 50px 15px;
     }
 }
+
 
 
